@@ -3,15 +3,18 @@
 using namespace std; 
 
 int main() {
-	int number; 
+    int number; 
 
-	cout << "podaj liczbe calkowita: ";
-	cin >> number;
-	if (number >= 0) {
-		cout << "wpisales dodatnia liczbe calkowita:" << number << endl;
-	}
-	else {
-		cout << "wpisales ujemna liczbe calkowita:" << number << endl;
-	}
-	return 0;
+    cout << "podaj liczbe calkowita: ";
+    cin >> number;
+    if (number > 0) {
+        cout << "wpisales dodatnia liczbe calkowita: " << number << endl;
+    }
+    else if (number == 0) {
+        cout << "wpisales 0: " << number << endl;
+    }
+    else {
+        cout << "wpisales ujemna liczbe calkowita: " << number << endl;
+    }
+    return 0;
 }
