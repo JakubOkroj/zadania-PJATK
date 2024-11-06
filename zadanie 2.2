@@ -1,0 +1,51 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+
+	int a, b;
+	cout << "podaj liczbe a:";
+	cin >> a;
+	cout << "podaj liczbe b:";
+	cin >> b;
+
+	cout << "\n";
+
+	cout << "wiersz gwiazdek o dlugosci a:";
+	int i;
+	for (i = 0; i < a; i++) {
+		cout << "*";
+	}
+
+	cout << endl;
+	cout << "kolumna gwiazdek o dlugosci b:" << endl;
+	int j;
+	for (j = 0; j < a; j++) {
+		cout << "*" << endl;
+	}
+
+	cout << "wypelniony prostokat o wymiarach a i b" << endl;
+	int o, p;
+	for (o = 0; o < a; ++o) {
+		for (p = 0; p < b; ++p) {
+			cout << "*";
+		}
+		cout << endl;
+	}
+
+	cout << "obwod prostokat o wymiarach a i b" << endl;
+
+	int x, d;
+	for (int x = 0; x < b; ++x) {
+		for (int d = 0; d < a; ++d) {
+			if (x == 0 || x == b - 1 || d == 0 || d == a - 1) {
+				cout << "*";
+			}
+			else {
+				cout << " ";
+			}
+		}
+		cout << "\n";
+	}
+	return 0;
+}
