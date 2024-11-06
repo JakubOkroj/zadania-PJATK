@@ -1,0 +1,88 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int miesiac;
+    cout << "Podaj numer miesiaca (1-12): ";
+    cin >> miesiac;
+
+    
+    if (miesiac < 1 || miesiac > 12) {
+        cout << "Niepoprawny numer miesiaca. Program zakonczy dzialanie." << endl;
+        return 1; 
+    }
+
+    
+    int dni;
+    string nazwa;
+    string pogoda;
+
+    
+    if (miesiac == 1) {
+        nazwa = "Styczen";
+        dni = 31;
+        pogoda = "pochmurno";
+    }
+    else if (miesiac == 2) {
+        nazwa = "Luty";
+        dni = 28;
+        pogoda = "pochmurno";
+    }
+    else if (miesiac == 3) {
+        nazwa = "Marzec";
+        dni = 31;
+        pogoda = "pochmurno";
+    }
+    else if (miesiac == 4) {
+        nazwa = "Kwiecien";
+        dni = 30;
+        pogoda = "slonecznie";
+    }
+    else if (miesiac == 5) {
+        nazwa = "Maj";
+        dni = 31;
+        pogoda = "slonecznie";
+    }
+    else if (miesiac == 6) {
+        nazwa = "Czerwiec";
+        dni = 30;
+        pogoda = "slonecznie";
+    }
+    else if (miesiac == 7) {
+        nazwa = "Lipiec";
+        dni = 31;
+        pogoda = "slonecznie";
+    }
+    else if (miesiac == 8) {
+        nazwa = "Sierpien";
+        dni = 31;
+        pogoda = "slonecznie";
+    }
+    else if (miesiac == 9) {
+        nazwa = "Wrzesien";
+        dni = 30;
+        pogoda = "slonecznie";
+    }
+    else if (miesiac == 10) {
+        nazwa = "Pazdziernik";
+        dni = 31;
+        pogoda = "pochmurno";
+    }
+    else if (miesiac == 11) {
+        nazwa = "Listopad";
+        dni = 30;
+        pogoda = "pochmurno";
+    }
+    else if (miesiac == 12) {
+        nazwa = "Grudzien";
+        dni = 31;
+        pogoda = "pochmurno";
+    }
+
+    
+    cout << "Miesiac: " << nazwa << endl;
+    cout << "Liczba dni: " << dni << endl;
+    cout << "Pogoda: " << pogoda << endl;
+
+    return 0;
+}
