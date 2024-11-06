@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Podaj wartosc n: ";
+    cin >> n;
+
+    int sumaSzeregu = 0;
+    for (int i = 1; i <= n; i++) {
+        int sumaCzastkowa = 0;
+        for (int j = 1; j <= i; j++) {
+            sumaCzastkowa += j;
+        }
+        sumaSzeregu += sumaCzastkowa;
+        cout << "Suma czastkowa " << i << " = " << sumaCzastkowa << endl;
+    }
+
+    cout << "Suma szeregu: " << sumaSzeregu << endl;
+    return 0;
+}
