@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+
+int printPascalsTriangle(int row) {
+	for (int x = 0; x < row; x++) {
+		int wartosc = 1;
+
+		for (int y = 0; y < row - x - 1; y++) {
+			cout << " ";
+		}
+
+		for (int y = 0; y <= x; y++) {
+			cout << wartosc << " ";
+			wartosc = wartosc * (x - y) / (y + 1);
+		}
+
+		cout << endl;
+	}
+	return 0;
+}
+
+int main() {
+	int row;
+	cout << "Podaj liczbe wierszy: ";
+	cin >> row;
+	printPascalsTriangle(row);
+	return 0;
+}
