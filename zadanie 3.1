@@ -1,0 +1,27 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+    float x;
+
+    cout << "Podaj liczbe x: ";
+    cin >> x;
+   
+    float y;
+     cout << "Podaj liczbe y: ";
+    cin >> y;
+
+    float suma = x + y;
+    float roznica = x - y;
+    float iloczyn = x * y;
+    float iloraz = x / y;
+   
+    cout << "suma: " << setprecision(2) << suma << endl;
+    cout << "roznica: " << setprecision(2) << roznica << endl;
+    cout << "iloczyn: " << setprecision(2) << iloczyn << endl;
+    cout << "iloraz: " << setprecision(2) << iloraz << endl;
+
+    return 0;
+}
