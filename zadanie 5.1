@@ -1,0 +1,40 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main() {
+    int n;
+
+    cout << "Podaj liczbe elementow wektora: ";
+    cin >> n;
+
+    if (n <= 0) {
+        cout << "Liczba elementow musi byc dodatnia!" << endl;
+        return 1;
+    }
+
+    vector<int> wektor(n);
+
+    cout << "Podaj " << n << " elementow wektora:" << endl;
+    for (int i = 0; i < n; ++i) {
+        cout << "Element " << i + 1 << ": ";
+        cin >> wektor[i];
+    }
+
+
+    int maksymalny = wektor[0]; 
+    int indeksMaksymalnego = 0;
+
+    for (int i = 1; i < n; ++i) { 
+        if (wektor[i] > maksymalny) {
+            maksymalny = wektor[i];
+            indeksMaksymalnego = i;
+        }
+    }
+
+    cout << "Wartosc maksymalna: " << maksymalny << endl;
+    cout << "Indeks elementu maksymalnego: " << indeksMaksymalnego << endl;
+
+    return 0;
+}
