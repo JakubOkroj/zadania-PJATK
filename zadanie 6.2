@@ -1,0 +1,78 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct Uczen {
+    string imie;
+    int informatyka;
+    int matematyka;
+    int biologia;
+    int polski;
+};
+
+int main() {
+    Uczen uczniowie[6];
+
+    for (int i = 0; i < 6; i++) {
+        cout << "Podaj imie ucznia nr " << i + 1 << ": ";
+        cin >> uczniowie[i].imie;
+
+        cout << "Podaj ocene z informatyki: ";
+        cin >> uczniowie[i].informatyka;
+
+        cout << "Podaj ocene z matematyki: ";
+        cin >> uczniowie[i].matematyka;
+
+        cout << "Podaj ocene z biologii: ";
+        cin >> uczniowie[i].biologia;
+
+        cout << "Podaj ocene z jezyka polskiego: ";
+        cin >> uczniowie[i].polski;
+
+        cout << endl;
+    }
+
+    int numerUcznia, przedmiot;
+    cout << "Ile zapytan o oceny chcesz zrobic? ";
+    int liczbaZapytan;
+    cin >> liczbaZapytan;
+
+    for (int i = 0; i < liczbaZapytan; i++) {
+        cout << "Podaj numer ucznia [1-6]: ";
+        cin >> numerUcznia;
+
+        if (numerUcznia < 1 || numerUcznia > 6) {
+            cout << "Nieprawidlowy numer ucznia!" << endl;
+            continue;
+        }
+
+        cout << "Podaj numer przedmiotu [0: informatyka, 1: matematyka, 2: biologia, 3: polski]: ";
+        cin >> przedmiot;
+
+        if (przedmiot < 0 || przedmiot > 3) {
+            cout << "Nieprawidlowy numer przedmiotu!" << endl;
+            continue;
+        }
+
+        Uczen uczen = uczniowie[numerUcznia - 1];
+        cout << "Uczen: " << uczen.imie << ", ocena z ";
+
+        switch (przedmiot) {
+            case 0:
+                cout << "informatyki: " << uczen.informatyka << endl;
+                break;
+            case 1:
+                cout << "matematyki: " << uczen.matematyka << endl;
+                break;
+            case 2:
+                cout << "biologii: " << uczen.biologia << endl;
+                break;
+            case 3:
+                cout << "jezyka polskiego: " << uczen.polski << endl;
+                break;
+        }
+    }
+
+    return 0;
+}
+
