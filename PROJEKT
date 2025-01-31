@@ -1,0 +1,95 @@
+#include <iostream>
+#include <vector>
+#include <climits>
+
+using namespace std;
+
+void znajdzNajlepszaSciezke(const vector<vector<int>>& tablica) {
+    int wiersze = tablica.size();
+    int kolumny = tablica[0].size();
+    
+    // Tablica do przechowywania minimalnych sum
+    vector<vector<int>> dp(wiersze, vector<int>(kolumny, INT_MAX));
+    
+    // Tablica do przechowywania poprzednich kroków
+    vector<vector<pair<int, int>>> poprzedni(wiersze, vector<pair<int, int>>(kolumny, make_pair(-1, -1)));
+    
+    // Inicjalizacja pierwszej kolumny
+    for (int i = 0; i < wiersze; ++i) {
+        dp[i][0] = tablica[i][0];
+    }
+    
+    // Wypełnianie tablicy dp
+    for (int j = 1; j < kolumny; ++j) {
+        for (int i = 0; i < wiersze; ++i) {
+            // Sprawdzamy wszystkie możliwe ruchy
+            for (int k = -1; k <= 1; ++k) {
+                if (i + k >= 0 && i + k < wiersze) {
+                    if (dp[i + k][j - 1] + tablica[i][j] < dp[i][j]) {
+                        dp[i][j] = dp[i + k][j - 1] + tablica[i][j];
+                        poprzedni[i][j] = make_pair(i + k, j - 1);
+                    }
+                }
+            }
+        }
+    }
+    
+    // Znajdowanie minimalnej sumy w ostatniej kolumnie
+    int minSuma = INT_MAX;
+    int ostatniWiersz = 0;
+    for (int i = 0; i < wiersze; ++i) {
+        if (dp[i][kolumny - 1] < minSuma) {
+            minSuma = dp[i][kolumny - 1];
+            ostatniWiersz = i;
+        }
+    }
+    
+    // Odtwarzanie ścieżki
+    vector<int> sciezka;
+    int i = ostatniWiersz;
+    int j = kolumny - 1;
+    while (j >= 0) {
+        sciezka.push_back(tablica[i][j]);
+        pair<int, int> p = poprzedni[i][j];
+        i = p.first;
+        j = p.second;
+    }
+    
+    // Wyświetlanie wyniku
+    cout << "Najlepsza ścieżka wiedzie przez pola o wartości: ";
+    for (int k = sciezka.size() - 1; k >= 0; --k) {
+        cout << sciezka[k];
+        if (k > 0) cout << ", ";
+    }
+    cout << ", suma pól: " << minSuma << endl;
+}
+
+int main() {
+    int wiersze, kolumny;
+    cout << "Podaj liczbę wierszy: ";
+    cin >> wiersze;
+    cout << "Podaj liczbę kolumn: ";
+    cin >> kolumny;
+    
+    vector<vector<int>> tablica(wiersze, vector<int>(kolumny));
+    
+    // Wypełnianie tablicy losowymi wartościami
+    for (int i = 0; i < wiersze; ++i) {
+        for (int j = 0; j < kolumny; ++j) {
+            tablica[i][j] = rand() % 10 + 1; // Losowe wartości od 1 do 10
+        }
+    }
+    
+    // Wyświetlanie tablicy
+    cout << "Tablica:" << endl;
+    for (int i = 0; i < wiersze; ++i) {
+        for (int j = 0; j < kolumny; ++j) {
+            cout << tablica[i][j] << " ";
+        }
+        cout << endl;
+    }
+    
+    znajdzNajlepszaSciezke(tablica);
+    
+    return 0;
+}
